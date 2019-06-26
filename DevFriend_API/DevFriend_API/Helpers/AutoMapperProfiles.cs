@@ -32,7 +32,8 @@ namespace DevFriend_API.Helpers
                 });
             CreateMap<Photo, PhotosForDetailedDto>();
             CreateMap<UserForUpdateDto, User>();
-            CreateMap<UserForRegisterDto, User>();
+            CreateMap<AddQuestionDto, Question>();
+            CreateMap<Question, AddQuestionDto>();
             //CreateMap<Photo, PhotoForReturnDto>();
             //CreateMap<PhotosForCreationDto, Photo>();
 

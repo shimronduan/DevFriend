@@ -90,11 +90,14 @@ namespace DevFriend_API
             services.AddScoped<IMongoContext, MongoContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-
+            //Services
             services.AddScoped<IAuthService, AuthService>();
 
+            //Repos
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IQuestionRepository, QuestionRepository>();
+            services.AddScoped<ITagRepository, TagRepository>();
         }
     }
 }
