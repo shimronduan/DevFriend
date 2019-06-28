@@ -1,6 +1,14 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-@import '../node_modules/bootswatch/dist/flatly/bootstrap.min.css';
+/* @import '../node_modules/bootswatch/dist/flatly/bootstrap.min.css'; */
+/* @import './assets/minton/css/bootstrap.min.css'; */
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
 @import '../node_modules/alertifyjs/build/css/alertify.min.css';
 @import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
 @import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
+
+@import './assets/minton/css/core.css';
+@import './assets/minton/css/components.css';
+@import './assets/minton/css/icons.css';
+@import './assets/minton/css/pages.css';
+@import './assets/minton/css/menu.css';
+@import './assets/minton/css/responsive.css';

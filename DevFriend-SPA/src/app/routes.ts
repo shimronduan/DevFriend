@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { RegisterComponent } from './register/register.component';
 import { QuestionDetailComponent } from './Question/question-detail/question-detail.component';
+import { QuestionDetailResolver } from './_resolvers/question-detail.resolver';
 
 
 export const appRoutes: Routes = [
@@ -12,7 +13,7 @@ export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'jobs', component: JobsComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'questions/:id', component: QuestionDetailComponent },
+    { path: 'questions/:id', component: QuestionDetailComponent , resolve: { questionDetail: QuestionDetailResolver }},
     {
         path: '',
         runGuardsAndResolvers: 'always',
