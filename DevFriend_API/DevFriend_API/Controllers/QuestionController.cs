@@ -73,8 +73,24 @@ namespace DevFriend_API.Controllers
             try
             {
                 var list = (await _questionRepository.GetAll()).OrderByDescending(m=>m.CreatedDate);
-                var listDto = _mapper.Map<IEnumerable<AddQuestionDto>>(list);
-                return Ok(list);
+                var listDto = _mapper.Map<IEnumerable<QuestionListDto>>(list);
+                return Ok(listDto);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+        [HttpGet("questions/{id}")]
+        public async Task<IActionResult> GetQuestionById(string id)
+        {
+            try
+            {
+                var qid = new Guid(id);
+                var question = await _questionRepository.GetById(qid);
+                var questionDto = _mapper.Map<QuestionDetailDto>(question);
+                return Ok(questionDto);
             }
             catch (Exception ex)
             {

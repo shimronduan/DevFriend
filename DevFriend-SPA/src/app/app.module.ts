@@ -21,6 +21,7 @@ import { RegisterComponent } from './register/register.component';
 import { PostQuestionComponent } from './Question/post-question/post-question.component';
 import { TagService } from './_services/tag.service';
 import { QuestionListComponent } from './Question/question-list/question-list.component';
+import { QuestionDetailComponent } from './Question/question-detail/question-detail.component';
 
 export function tokenGetter(){
    return localStorage.getItem('token');
@@ -36,7 +37,8 @@ export function tokenGetter(){
       HomeComponent,
       RegisterComponent,
       PostQuestionComponent,
-      QuestionListComponent
+      QuestionListComponent,
+      QuestionDetailComponent
    ],
    imports: [
       BrowserModule,

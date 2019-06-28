@@ -4,6 +4,7 @@ import { StudyComponent } from './study/study.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { RegisterComponent } from './register/register.component';
+import { QuestionDetailComponent } from './Question/question-detail/question-detail.component';
 
 
 export const appRoutes: Routes = [
@@ -11,6 +12,7 @@ export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'jobs', component: JobsComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'questions/:id', component: QuestionDetailComponent },
     {
         path: '',
         runGuardsAndResolvers: 'always',

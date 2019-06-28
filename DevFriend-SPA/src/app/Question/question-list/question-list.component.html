@@ -1,11 +1,18 @@
 <div class="row">
   <div class="col-lg-3"></div>
   <div class="col-lg-6">
-      <div class="media m-2" *ngFor="let Qitem of questionList">
+      <div class="media m-2" *ngFor="let Qitem of questionList" [routerLink]="['/questions/',Qitem.id]">
           <img src="../../../assets/Images/user.png" class="mr-3"  width="50" height="50">
           <div class="media-body">
-            <h5 class="mt-0">{{Qitem.Heading}}</h5>
-            {{Qitem.Description}}
+            <h5 class="mt-0">{{Qitem.heading}}</h5>
+            <div class="ml-2">
+                <div class="row">
+                    <span class="badge badge-dark mr-1" *ngFor="let tagItem of Qitem.tags">{{tagItem.name}}</span>
+                  </div>
+                  <div class="row">
+                  {{(Qitem.description).substring(0,200)+"..."}}              
+                  </div>
+            </div>
           </div>
         </div>
   </div>
