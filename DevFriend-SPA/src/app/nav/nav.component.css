@@ -8,6 +8,14 @@ img{
     max-height: 50px;
     border: 2px solid white;
 }
+.nav-color{
+    background-color: #06213e;
+}
+.nav-pro-pic {
+    border: 0px solid #edf0f0;
+    height: 36px;
+    width: 36px;
+  }
 /* .brand-text{
     font-weight: bold;
     font-family: cursive;

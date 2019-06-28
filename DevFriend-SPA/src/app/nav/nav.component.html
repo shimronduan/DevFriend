@@ -1,21 +1,21 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+<nav class="navbar navbar-expand-md navbar-dark nav-color">
   <div class="container nav-container">
       <a class="navbar-brand" [routerLink]="['/']"><span class="brand-text">Dev-Friend</span></a>
-      <ul class="navbar-nav mr-auto"  *ngIf="loggedIn()">
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/home']">Home</a>
+      <ul class="navbar-nav"  *ngIf="loggedIn()">
+        <li class="nav-item mr-3" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/home']"><i class="fa fa-home mr-1"></i>Home</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/jobs']" >Jobs</a>
+        <li class="nav-item mr-3" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/jobs']" ><i class="fa fa-briefcase mr-1"></i>Jobs</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/study']">Study</a>
+        <li class="nav-item mr-3" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/study']"><i class="fa fa-graduation-cap mr-1"></i>Study</a>
         </li>
       </ul>
       
       <div class="dropdown" *ngIf="loggedIn()" dropdown>
         <span>
-          <img src="{{photoUrl}}" alt=""> 
+          <img src="{{photoUrl}}" alt="" class="rounded-circle img-thumbnail nav-pro-pic"> 
         </span>
         <a class="btn btn-secondary dropdown-toggle text-light ml-2" dropdownToggle>
           Welcome {{authService.decodedToken?.unique_name |titlecase}}
