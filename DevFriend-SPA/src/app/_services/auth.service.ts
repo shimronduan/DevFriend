@@ -15,7 +15,7 @@ export class AuthService {
   jwtHelper = new JwtHelperService();
   decodedToken: any;
   currentUser:User;
-  photoUrl = new BehaviorSubject<string>('../../assets/Images/user.png');
+  photoUrl = new BehaviorSubject<string>('../../assets/minton/images/users/avatar-1.jpg');
   currentPhotourl = this.photoUrl.asObservable();
 
   constructor(private http: HttpClient) { }

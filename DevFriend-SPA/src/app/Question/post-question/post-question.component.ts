@@ -40,6 +40,7 @@ export class PostQuestionComponent implements OnInit {
     // debugger;
     // console.log(this.postQuestionTag);
     this.questionservice.PostQuestion(this.question).subscribe(next => {
+      
       this.alertify.success('Query posted successfully')
     }, error => {
       this.alertify.error(error)

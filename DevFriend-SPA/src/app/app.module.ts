@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import{FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { BsDropdownModule, TabsModule, BsDatepickerModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, BsDatepickerModule, ModalModule } from 'ngx-bootstrap';
 import { JwtModule } from '@auth0/angular-jwt';
 import { RouterModule } from '@angular/router';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
@@ -48,6 +48,7 @@ export function tokenGetter(){
       FormsModule,
       ReactiveFormsModule,
       BsDropdownModule.forRoot(),
+      ModalModule.forRoot(),
       NgMultiSelectDropDownModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       JwtModule.forRoot({
