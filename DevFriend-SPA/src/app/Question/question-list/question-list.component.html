@@ -5,13 +5,15 @@
         <div class="media" [routerLink]="['/questions/',Qitem.id]">
           <img src="../../../assets/minton/images/users/avatar-2.jpg" class="mr-3"  width="50" height="50">
           <div class="media-body">
-            <h5 class="mt-0">{{Qitem.heading}}</h5>
+            <h6 class="mt-0">{{Qitem.heading}}</h6>
             <div class="ml-2">
                 <div class="row">
                     <span class="badge badge-dark mr-1" *ngFor="let tagItem of Qitem.tags">{{tagItem.name}}</span>
                   </div>
                   <div class="row">
-                  {{(Qitem.description).substring(0,200)+"..."}}              
+                    <div class="listDescriptionFont">
+                        {{(Qitem.description).substring(0,200)+"..."}}              
+                    </div>
                   </div>
             </div>
           </div>

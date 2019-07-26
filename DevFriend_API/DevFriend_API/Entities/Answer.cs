@@ -10,6 +10,6 @@ namespace DevFriend_API.Entities
         public Guid Id { get; set; }
         public string Solution { get; set; }
         public int Vote { get; set; }
-
+        public Guid UserId { get; set; }
     }
 }

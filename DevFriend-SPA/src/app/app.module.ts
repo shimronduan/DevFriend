@@ -23,6 +23,7 @@ import { TagService } from './_services/tag.service';
 import { QuestionListComponent } from './Question/question-list/question-list.component';
 import { QuestionDetailComponent } from './Question/question-detail/question-detail.component';
 import { QuestionDetailResolver } from './_resolvers/question-detail.resolver';
+import { PostAnswerComponent } from './Question/post-answer/post-answer.component';
 
 export function tokenGetter(){
    return localStorage.getItem('token');
@@ -39,7 +40,8 @@ export function tokenGetter(){
       RegisterComponent,
       PostQuestionComponent,
       QuestionListComponent,
-      QuestionDetailComponent
+      QuestionDetailComponent,
+      PostAnswerComponent
    ],
    imports: [
       BrowserModule,

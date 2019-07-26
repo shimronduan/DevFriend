@@ -98,6 +98,32 @@ namespace DevFriend_API.Controllers
             }
 
         }
+        [HttpPost("questions/{id}/postanswer")]
+        public async Task<IActionResult> Answer(string id,AnswerPostDto answerPostDto)
+        {
+            try
+            {
+                var qid = new Guid(answerPostDto.QuestionId);
+                var question = await _questionRepository.GetById(qid);
+                var ans = new Answer
+                {
+                    Solution = answerPostDto.Solution,
+                    UserId = new Guid(id),
+                    Vote = 0
+                };
+                question.Answers = new List<Answer>();
+                question.Answers.Add(ans);
+                _questionRepository.Update(question);
+                if (await _unitOfWork.Commit())
+                    return Ok();
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         //[HttpPost("login")]
         //public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         //{

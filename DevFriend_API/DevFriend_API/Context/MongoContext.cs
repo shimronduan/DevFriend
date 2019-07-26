@@ -7,6 +7,9 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Security;
+using System.Security.Authentication;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace DevFriend_API.Context
@@ -30,7 +33,28 @@ namespace DevFriend_API.Context
             //Database = mongoClient.GetDatabase(Environment.GetEnvironmentVariable("DATABASENAME") ?? configuration.GetSection("MongoSettings").GetSection("DatabaseName").Value);
 
 
-            var mongoClient = new MongoClient(settings.Value.ConnectionString);
+            //var mongoClient = new MongoClient(settings.Value.ConnectionString);
+
+            //------------------------------------------
+            MongoClientSettings mongosettings = MongoClientSettings.FromUrl(new MongoUrl(settings.Value.ConnectionString));
+            mongosettings.SslSettings = new SslSettings()
+            {
+                EnabledSslProtocols = SslProtocols.Tls12,
+                ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+                {
+                    foreach (var element in chain.ChainElements)
+                    {
+                        // Gets the error status of the current X.509 certificate in a chain.
+                        foreach (var status in element.ChainElementStatus)
+                        {
+                            Console.WriteLine($"certificate subject: {element.Certificate.Subject},ChainStatus: {status.StatusInformation}");
+                        }
+                    }
+                    return true; //just for dev, it would bypass certificate errors
+                }
+            };
+            var mongoClient = new MongoClient(mongosettings);
+            //
 
             Database = mongoClient.GetDatabase(settings.Value.Database);
 
