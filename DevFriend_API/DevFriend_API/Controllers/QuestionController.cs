@@ -21,8 +21,8 @@ namespace DevFriend_API.Controllers
         private IUnitOfWork _unitOfWork;
         private ITagRepository _tagRepository;
         public QuestionController
-            (IMapper mapper, IQuestionRepository questionRepository,IUnitOfWork unitOfWork, ITagRepository tagRepository)
-        {
+            (IMapper mapper, IQuestionRepository questionRepository, IUnitOfWork unitOfWork, ITagRepository tagRepository)
+        {   
             _mapper = mapper;
             _questionRepository = questionRepository;
             _unitOfWork = unitOfWork;
@@ -58,7 +58,7 @@ namespace DevFriend_API.Controllers
         {
             try
             {
-                var list =await _tagRepository.GetAll();
+                var list = await _tagRepository.GetAll();
                 return Ok(list);
             }
             catch (Exception ex)
@@ -72,7 +72,7 @@ namespace DevFriend_API.Controllers
         {
             try
             {
-                var list = (await _questionRepository.GetAll()).OrderByDescending(m=>m.CreatedDate);
+                var list = (await _questionRepository.GetAll()).OrderByDescending(m => m.CreatedDate);
                 var listDto = _mapper.Map<IEnumerable<QuestionListDto>>(list);
                 return Ok(listDto);
             }
@@ -99,7 +99,7 @@ namespace DevFriend_API.Controllers
 
         }
         [HttpPost("questions/{id}/postanswer")]
-        public async Task<IActionResult> Answer(string id,AnswerPostDto answerPostDto)
+        public async Task<IActionResult> Answer(string id, AnswerPostDto answerPostDto)
         {
             try
             {
@@ -161,50 +161,59 @@ namespace DevFriend_API.Controllers
         [HttpPost("test")]
         public async Task<IActionResult> Test()
         {
-            List<Tag> list = new List<Tag>();
+            try
+            {
+                List<Tag> list = new List<Tag>();
 
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Programming" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "OOP" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Java" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "C++" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "C#" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "RUBY" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Pascal" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = ".Net" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Networking" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "IOT" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Raspberry PI" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Python" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Arduino" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Networking" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "TCP/IP" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "MS-SQL" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Mongo DB" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Oracle Database" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "MySQL" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "PHP" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "CSS" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "JavaScript" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Angular" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "React" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Node.js" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "IOS" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Andriod" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Kotlin" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Swift" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Mobile development" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Web development" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Machine Learning" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Artificial Inteligence" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Cloud Computing" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Azure" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "AWS" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Firebase" });
-            _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Data-Structures and Algorithms" });
-            var s = await _unitOfWork.Commit();
-            if(s)
-                return Ok(new { duan = "its working" });
-            return BadRequest();
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Programming" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "OOP" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Java" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "C++" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "C#" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "RUBY" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Pascal" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = ".Net" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Networking" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "IOT" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Raspberry PI" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Python" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Arduino" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Networking" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "TCP/IP" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "MS-SQL" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Mongo DB" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Oracle Database" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "MySQL" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "PHP" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "CSS" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "JavaScript" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Angular" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "React" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Node.js" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "IOS" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Andriod" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Kotlin" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Swift" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Mobile development" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Web development" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Machine Learning" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Artificial Inteligence" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Cloud Computing" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Azure" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "AWS" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Firebase" });
+                _tagRepository.Add(new Tag() { Id = new Guid(), Name = "Data-Structures and Algorithms" });
+                var s = await _unitOfWork.Commit();
+                if (s)
+                    return Ok(new { duan = "its working" });
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
         }
     }
 }

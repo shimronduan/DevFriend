@@ -5,7 +5,16 @@
 export const environment = {
   production: false,
   apiUrl:'https://localhost:44342/api/',
-  apiBaseUrl:'https://localhost:44342/'  
+  apiBaseUrl:'https://localhost:44342/',
+  firebaseConfig : {
+    apiKey: "AIzaSyAQQ3ID7GxttGNOzn_vlM9chKw2lPSaFVI",
+    authDomain: "dev-friend-ybkjvy.firebaseapp.com",
+    databaseURL: "https://project-id.firebaseio.com",
+    projectId: "dev-friend-ybkjvy",
+    storageBucket: "dev-friend-ybkjvy",
+    messagingSenderId: "sender-id",
+    appID: "app-id",
+  }  
 };
 
 /*

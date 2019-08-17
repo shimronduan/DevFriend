@@ -5,6 +5,10 @@ import { BsDropdownModule, TabsModule, BsDatepickerModule, ModalModule } from 'n
 import { JwtModule } from '@auth0/angular-jwt';
 import { RouterModule } from '@angular/router';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,9 +28,16 @@ import { QuestionListComponent } from './Question/question-list/question-list.co
 import { QuestionDetailComponent } from './Question/question-detail/question-detail.component';
 import { QuestionDetailResolver } from './_resolvers/question-detail.resolver';
 import { PostAnswerComponent } from './Question/post-answer/post-answer.component';
+import { TutorialCardComponent } from './tutorial/tutorial-card/tutorial-card.component';
+import { TutorialListComponent } from './tutorial/tutorial-list/tutorial-list.component';
+import { UserComponent } from './user/user.component';
+import { UserDetailResolver } from './_resolvers/user-detail.resolver';
 
 export function tokenGetter(){
    return localStorage.getItem('token');
+}
+export function firebaseConfigGetter(){
+   return environment.firebaseConfig;
 }
 
 @NgModule({
@@ -41,7 +52,10 @@ export function tokenGetter(){
       PostQuestionComponent,
       QuestionListComponent,
       QuestionDetailComponent,
-      PostAnswerComponent
+      PostAnswerComponent,
+      TutorialCardComponent,
+      TutorialListComponent,
+      UserComponent
    ],
    imports: [
       BrowserModule,
@@ -61,13 +75,17 @@ export function tokenGetter(){
          }
       }),
       TabsModule.forRoot(),
-      BsDatepickerModule.forRoot()
+      BsDatepickerModule.forRoot(),
+      AngularFireModule.initializeApp(firebaseConfigGetter()),
+      AngularFirestoreModule,
+      AngularFireStorageModule
    ],
    providers: [
       AuthService,
       AlertifyService,
       TagService,
-      QuestionDetailResolver
+      QuestionDetailResolver,
+      UserDetailResolver
    ],
    bootstrap: [
       AppComponent

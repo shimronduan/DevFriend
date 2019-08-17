@@ -6,13 +6,17 @@ import { AuthGuard } from './_guards/auth.guard';
 import { RegisterComponent } from './register/register.component';
 import { QuestionDetailComponent } from './Question/question-detail/question-detail.component';
 import { QuestionDetailResolver } from './_resolvers/question-detail.resolver';
+import { UserComponent } from './user/user.component';
+import { UserDetailResolver } from './_resolvers/user-detail.resolver';
 
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', component: HomeComponent },
+    // { path: 'user', component: UserComponent },
     { path: 'jobs', component: JobsComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'user/edit', component: UserComponent , resolve: { userDetail: UserDetailResolver }},
     { path: 'questions/:id', component: QuestionDetailComponent , resolve: { questionDetail: QuestionDetailResolver }},
     {
         path: '',

@@ -92,12 +92,14 @@ namespace DevFriend_API
 
             //Services
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IFileUploader, FileUploader>();
 
             //Repos
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IQuestionRepository, QuestionRepository>();
             services.AddScoped<ITagRepository, TagRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
     }
 }

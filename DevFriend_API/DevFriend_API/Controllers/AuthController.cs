@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +7,6 @@ using AutoMapper;
 using DevFriend_API.DevFriend_API.BLL.Interface;
 using DevFriend_API.dtos;
 using DevFriend_API.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -40,9 +37,10 @@ namespace DevFriend_API.Controllers
                 if (await _authService.UserExist(userForRegisterDto.Username))
                     return BadRequest("Username already exists");
                 var userToCreate = _mapper.Map<User>(userForRegisterDto);
+                userToCreate.Id = new Guid();
                 var createdUser = await _authService.Register(userToCreate, userForRegisterDto.Password);
                 var userToReturn = _mapper.Map<UserForDetailedDto>(createdUser);
-                return CreatedAtRoute("GetUser", new { controller = "Users", id = createdUser.Id }, userToReturn);
+                return CreatedAtRoute("GetUser", new { controller = "User", id = createdUser.Id }, userToReturn);
             }
             catch (Exception ex)
             {
