@@ -32,6 +32,8 @@ import { TutorialCardComponent } from './tutorial/tutorial-card/tutorial-card.co
 import { TutorialListComponent } from './tutorial/tutorial-list/tutorial-list.component';
 import { UserComponent } from './user/user.component';
 import { UserDetailResolver } from './_resolvers/user-detail.resolver';
+import { UploaderComponent } from './uploader/uploader/uploader.component';
+import { UploadTaskComponent } from './uploader/upload-task/upload-task.component';
 
 export function tokenGetter(){
    return localStorage.getItem('token');
@@ -55,7 +57,9 @@ export function firebaseConfigGetter(){
       PostAnswerComponent,
       TutorialCardComponent,
       TutorialListComponent,
-      UserComponent
+      UserComponent,
+      UploaderComponent,
+      UploadTaskComponent
    ],
    imports: [
       BrowserModule,
