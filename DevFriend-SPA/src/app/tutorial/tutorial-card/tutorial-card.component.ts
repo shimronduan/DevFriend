@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Tutorial } from 'src/app/_models/tutorial';
 
 @Component({
   selector: 'app-tutorial-card',
@@ -7,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TutorialCardComponent implements OnInit {
 
-  constructor() { }
+  @Input() tutorial: Tutorial;
 
+  constructor() { }
   ngOnInit() {
   }
 

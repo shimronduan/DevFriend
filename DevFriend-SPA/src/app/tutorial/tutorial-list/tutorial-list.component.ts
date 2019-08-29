@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Tutorial } from 'src/app/_models/tutorial';
+import { TutorialService } from 'src/app/_services/tutorial.service';
+import { AlertifyService } from 'src/app/_services/alertify.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tutorial-list',
@@ -7,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TutorialListComponent implements OnInit {
 
-  constructor() { }
+  tutorials: Tutorial[];
+  constructor(private userService: TutorialService, private alertify: AlertifyService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.data.subscribe(data => {
+      this.tutorials = data['tutorials'];
+    });
   }
-
 }

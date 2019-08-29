@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import { finalize, tap } from 'rxjs/operators';
 export class UploadTaskComponent implements OnInit {
 
   @Input() file: File;
-
+  @Output() getDownloadUrl = new EventEmitter<string>();
   task: AngularFireUploadTask;
 
   percentage: Observable<number>;
@@ -44,8 +44,8 @@ export class UploadTaskComponent implements OnInit {
       // The file's download URL
       finalize( async() =>  {
         this.downloadURL = await ref.getDownloadURL().toPromise();
-
-        this.db.collection('files').add( { downloadURL: this.downloadURL, path });
+        this.getDownloadUrl.emit(this.downloadURL);
+        // this.db.collection('files').add( { downloadURL: this.downloadURL, path });
       }),
     );
   }

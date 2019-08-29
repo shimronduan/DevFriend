@@ -1,11 +1,12 @@
-﻿using System;
+﻿using DevFriend_API.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DevFriend_API.Entities
+namespace DevFriend_API.dtos.TutorialDtos
 {
-    public class Tutorial
+    public class UploadTutorialDto
     {
         public Guid Id { get; set; }
         public string title { get; set; }
@@ -16,5 +17,4 @@ namespace DevFriend_API.Entities
         public Guid UserId { get; set; }
 
     }
-    
 }

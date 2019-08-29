@@ -1,3 +1,7 @@
-<p>
-  tutorial-list works!
-</p>
+<div class="container mt-5">
+  <div class="row"> 
+    <div *ngFor="let tutorial of tutorials" class="col-lg-2 col-md-3 col-sm-6">
+      <app-tutorial-card [tutorial]="tutorial"></app-tutorial-card>
+    </div>
+  </div>
+</div>

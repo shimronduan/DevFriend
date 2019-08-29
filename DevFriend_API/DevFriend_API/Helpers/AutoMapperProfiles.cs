@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DevFriend_API.dtos;
+using DevFriend_API.dtos.TutorialDtos;
 using DevFriend_API.Entities;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,10 @@ namespace DevFriend_API.Helpers
             CreateMap<AddQuestionDto, Question>();
             CreateMap<Question, AddQuestionDto>();
             CreateMap<Question, QuestionDetailDto>();
+            CreateMap<UploadTutorialDto, Tutorial>();
+            CreateMap<Tutorial, UploadTutorialDto>();
+
+
             //CreateMap<Photo, PhotoForReturnDto>();
             //CreateMap<PhotosForCreationDto, Photo>();
 

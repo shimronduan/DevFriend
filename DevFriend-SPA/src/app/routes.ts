@@ -8,6 +8,8 @@ import { QuestionDetailComponent } from './Question/question-detail/question-det
 import { QuestionDetailResolver } from './_resolvers/question-detail.resolver';
 import { UserComponent } from './user/user.component';
 import { UserDetailResolver } from './_resolvers/user-detail.resolver';
+import { TutorialListComponent } from './tutorial/tutorial-list/tutorial-list.component';
+import { TutorialListResolver } from './_resolvers/tutorial-list.resolver';
 
 
 export const appRoutes: Routes = [
@@ -18,6 +20,8 @@ export const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'user/edit', component: UserComponent , resolve: { userDetail: UserDetailResolver }},
     { path: 'questions/:id', component: QuestionDetailComponent , resolve: { questionDetail: QuestionDetailResolver }},
+    { path: 'study', component: TutorialListComponent, resolve: { tutorials: TutorialListResolver } },
+
     {
         path: '',
         runGuardsAndResolvers: 'always',

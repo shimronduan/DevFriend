@@ -23,7 +23,9 @@ export class PostQuestionComponent implements OnInit {
 
   ngOnInit() {
     this.tagService.getTags()
-    .subscribe(response => { this.tags = response;}
+    .subscribe(response => { this.tags = response;
+    debugger;
+    }
       , error => { this.alertify.error("Error occured while retriving tags data !!!") });
 
 
