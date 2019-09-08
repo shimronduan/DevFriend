@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Question } from 'src/app/_models/question';
 import { TagService } from 'src/app/_services/tag.service';
 import { Tag } from 'src/app/_models/tag';
@@ -12,6 +12,7 @@ import { QuestionService } from 'src/app/_services/question.service';
 })
 export class PostQuestionComponent implements OnInit {
 
+  @Output() questionOutput = new EventEmitter<Question>();
   question:Question;
   tags:Tag[];
   postQuestionTag:any;
@@ -42,7 +43,7 @@ export class PostQuestionComponent implements OnInit {
     // debugger;
     // console.log(this.postQuestionTag);
     this.questionservice.PostQuestion(this.question).subscribe(next => {
-      
+      this.questionOutput.emit(this.question);
       this.alertify.success('Query posted successfully')
     }, error => {
       this.alertify.error(error)

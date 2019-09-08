@@ -42,6 +42,7 @@ import { UploadTaskComponent } from "./uploader/upload-task/upload-task.componen
 import { UploadTutorialsComponent } from "./upload-tutorials/upload-tutorials.component";
 import { TutorialService } from './_services/tutorial.service';
 import { TutorialListResolver } from './_resolvers/tutorial-list.resolver';
+import { AnswerListComponent } from './Question/answer-list/answer-list.component';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -68,7 +69,8 @@ export function firebaseConfigGetter() {
     UserComponent,
     UploaderComponent,
     UploadTaskComponent,
-    UploadTutorialsComponent
+    UploadTutorialsComponent,
+    AnswerListComponent
   ],
   imports: [
     BrowserModule,

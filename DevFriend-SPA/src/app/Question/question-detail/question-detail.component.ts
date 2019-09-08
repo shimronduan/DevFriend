@@ -15,7 +15,6 @@ export class QuestionDetailComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe(data=>{
       this.questionDetail= data['questionDetail'];
-      debugger;
     });
   }
 

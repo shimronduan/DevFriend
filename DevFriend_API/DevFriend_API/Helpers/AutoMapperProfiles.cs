@@ -37,6 +37,9 @@ namespace DevFriend_API.Helpers
             CreateMap<AddQuestionDto, Question>();
             CreateMap<Question, AddQuestionDto>();
             CreateMap<Question, QuestionDetailDto>();
+            CreateMap<AnswerPostDto, Answer>();
+            CreateMap<Answer, AnswerListDto>()
+                .ForMember(o => o.Username, m => m.Ignore());
             CreateMap<UploadTutorialDto, Tutorial>();
             CreateMap<Tutorial, UploadTutorialDto>();
 

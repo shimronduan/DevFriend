@@ -24,7 +24,7 @@
     <div class="row mt-4">
       <div class="col-lg-6"></div>
       <div class="col-lg-6">
-          <app-post-question></app-post-question>
+          <app-post-question (questionOutput)="refreshQuestionList($event)"></app-post-question>
       </div>
     </div>
   </div>

@@ -101,6 +101,7 @@ namespace DevFriend_API
             services.AddScoped<ITagRepository, TagRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ITutorialRepository, TutorialRepository>();
+            services.AddScoped<IAnswerRepository, AnswerRepository>();
             
         }
     }

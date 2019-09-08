@@ -20,13 +20,19 @@ namespace DevFriend_API.Controllers
         private IQuestionRepository _questionRepository;
         private IUnitOfWork _unitOfWork;
         private ITagRepository _tagRepository;
+        private IAnswerRepository _answerRepository;
+        private IUserRepository _userRepository;
         public QuestionController
-            (IMapper mapper, IQuestionRepository questionRepository, IUnitOfWork unitOfWork, ITagRepository tagRepository)
+            (IMapper mapper, IQuestionRepository questionRepository, IUnitOfWork unitOfWork, ITagRepository tagRepository, 
+            IAnswerRepository answerRepository, IUserRepository userRepository)
         {   
             _mapper = mapper;
             _questionRepository = questionRepository;
             _unitOfWork = unitOfWork;
             _tagRepository = tagRepository;
+            _answerRepository = answerRepository;
+            _userRepository = userRepository;
+
         }
 
         [HttpPost]
@@ -103,17 +109,9 @@ namespace DevFriend_API.Controllers
         {
             try
             {
-                var qid = new Guid(answerPostDto.QuestionId);
-                var question = await _questionRepository.GetById(qid);
-                var ans = new Answer
-                {
-                    Solution = answerPostDto.Solution,
-                    UserId = new Guid(id),
-                    Vote = 0
-                };
-                question.Answers = new List<Answer>();
-                question.Answers.Add(ans);
-                _questionRepository.Update(question);
+                var answer = _mapper.Map<Answer>(answerPostDto);
+                answer.UserId = new Guid(id);
+                _answerRepository.Add(answer);
                 if (await _unitOfWork.Commit())
                     return Ok();
                 return BadRequest();
@@ -121,6 +119,27 @@ namespace DevFriend_API.Controllers
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+        }
+        [HttpGet("questions/{id}/answer")]
+        public async Task<IActionResult> GetAnswerByQuestionId(string id)
+        {
+            try
+            {
+                var qid = new Guid(id);
+                var ansList = await _answerRepository.GetAnswersByQuestionId(qid);
+
+                var answerListDto = _mapper.Map<List<AnswerListDto>>(ansList);
+                //answerListDto.ToList().ForEach(m => m.Username =
+                //(await _userRepository.GetById(new Guid(m.UserId.ToString()))).Username
+                //);
+                //var a =await _userRepository.GetById(qid).;
+
+                return Ok(answerListDto);
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }

@@ -13,5 +13,7 @@ export class TutorialCardComponent implements OnInit {
   constructor() { }
   ngOnInit() {
   }
-
+  viewtutorial(){
+    window.open(this.tutorial.tutorialUrl, '_blank');
+  }
 }

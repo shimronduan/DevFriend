@@ -12,16 +12,25 @@ import { QuestionForList } from 'src/app/_models/question-for-list';
 export class QuestionListComponent implements OnInit {
 
   questionList:QuestionForList[];
-  constructor(private questionService:QuestionService,private alertify:AlertifyService) { }
+  obj:QuestionForList;
+  constructor(private questionService:QuestionService,private alertify:AlertifyService) { 
+    this.obj = new QuestionForList();
+  }
 
   ngOnInit() {
   this.questionService.GetQuestions().subscribe(response => { this.questionList = response;}
     , error => { this.alertify.error("Error occured while retriving Questions !!!") });
-    // this.questionService.GetQuestions().subscribe((data: QuestionForList[]) => {
-    //   console.log(data);
-    //   this.questionList = data;
-    //   console.log(this.questionList);
-    // })
+   
+  }
+  refreshQuestionList(q){
+    debugger;
+    this.obj.heading=q.Heading;
+    this.obj.description=q.Description;
+    this.obj.tags=q.Tags;
+
+
+    
+    this.questionList.push(this.obj);
   }
 
 }

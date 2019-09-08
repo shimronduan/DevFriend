@@ -42,8 +42,8 @@
               <div class="row">
                   <h5 class="m-0">Solutions</h5>
                   <div class="row">
-                    <div class="col-lg-12" *ngFor="let ans of questionDetail.answers">
-                      {{ans.solution}}
+                    <div class="col-lg-12">
+                      <app-answer-list [QuestionId]="questionDetail.id"></app-answer-list>
                     </div>
                   </div>
               </div>
