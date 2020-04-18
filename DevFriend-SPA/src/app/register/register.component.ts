@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
       this.authService.register(this.user).subscribe(next => {
         this.alertify.success('Registered in successfully');
       }, error => {
-        this.alertify.error(error);
+        this.alertify.error("Username already exist");
       }, () => {
         this.authService.login(this.user).subscribe(() => {
           this.router.navigate(['/home']);
